@@ -1,4 +1,14 @@
+<% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+    </div>
+<% end %>
+
 <h1><%= @gossip.title %></h1>
 <p><strong>Auteur :</strong> <%= link_to @gossip.user.first_name, user_path(@gossip.user) %></p>
 <p><strong>Contenu :</strong> <%= @gossip.description %></p>
+<p><strong>Ville :</strong> <%= @gossip.user.city.name %></p>
 <p><strong>Date de création :</strong> <%= @gossip.created_at %></p>
+
+<%= link_to "Éditer ce potin", edit_gossip_path(@gossip) %>
+<%= link_to "Supprimer ce potin", gossip_path(@gossip), data: { turbo_method: :delete } %>

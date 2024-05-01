@@ -1,12 +1,16 @@
-<% if params[:first_name].present? %>
-  <h1>BIENVENUE <%= params[:first_name] %> !</h1>
-<% else %>
-  <h1>Bienvenue sur The Gossip Project!</h1>
-  <p>Ceci est la page d'accueil de notre application.</p>
-<% end %>
-
-<!-- Ajout de l'image du logo -->
-<img src="<%= asset_path('the_gossip_project.png') %>" alt="Logo TGP">
+<div class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+  <% if params[:first_name].present? %>
+  <h1 class="display-4">Bienvenue <%= params[:first_name] %> !</h1>
+  <p class="lead">Ceci est la page d'accueil de notre site de gossips 🗣️ </p>
+  <% else %>
+    <h1 class="display-4">Bienvenue sur The Gossip Project!</h1>
+    <p class="lead">Ceci est la page d'accueil de notre site de gossips 🗣️ </p>
+    <% end %>
+    <!-- Ajout de l'image du logo -->
+    <img src="<%= asset_path('the_gossip_project.png') %>" alt="Logo TGP">
+  </div>
+</div>
 
 <% if flash[:success] %>
   <div class="alert alert-success">
@@ -14,7 +18,10 @@
     </div>
 <% end %>
 
-<h1>Liste des potins</h1>
+<div class="text-center bg-light p-3 mx-auto"> <!-- classe mx-auto = centrer horizontalement -->
+  <h1>Liste des potins</h1>
+</div>
+
 <div class="row">
   <% @gossips.each do |gossip| %>
     <div class="col-md-4 mb-4">

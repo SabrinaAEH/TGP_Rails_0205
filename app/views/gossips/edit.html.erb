@@ -1,0 +1,17 @@
+<h1>Éditer le potin</h1>
+
+<% if flash[:error].present? %>
+  <div class="alert alert-danger" role="alert">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
+<%= form_with(model: @gossip, url: gossip_path(@gossip), method: :patch) do |form| %>
+  <%= form.label :title, "Titre du potin" %>
+  <%= form.text_field :title %>
+
+  <%= form.label :description, "Description du potin" %>
+  <%= form.text_area :description %>
+
+  <%= form.submit "Mettre à jour le potin" %>
+<% end %>

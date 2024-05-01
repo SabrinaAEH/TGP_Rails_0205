@@ -27,10 +27,34 @@ class GossipsController < ApplicationController
       redirect_to new_gossip_path
     end
   end
-  
+
+  def edit
+    @gossip = Gossip.find(params[:id])
+  end
+
+  def update
+    @gossip = Gossip.find(params[:id])
+    if @gossip.update(gossip_params)
+      flash[:success] = "Le potin a été mis à jour avec succès !"
+      redirect_to @gossip
+    else
+      flash[:error] = "Erreur lors de la mise à jour du potin. Veuillez vérifier les informations."
+      redirect_to edit_gossip_path
+    end
+  end
+
+  def destroy
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    
+    flash[:success] = "Le potin a été supprimé avec succès !"
+    redirect_to home_path
+  end
+
   private
   
   def gossip_params
     params.require(:gossip).permit(:title, :description)
   end
+
 end

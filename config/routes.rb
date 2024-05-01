@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # get 'cities/show'
   # get '/users/:id', to: 'users#show', as: 'user'
   # get '/welcome/ask_name', to: 'welcome#ask_name'
   get '/home', to: 'pages#home'
@@ -13,7 +14,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'welcome#ask_name'
 
-  resources :gossips, only: [:show, :new, :create]
+  resources :gossips
   resources :users, only: [:show]
+  resources :cities
 
 end
