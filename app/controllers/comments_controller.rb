@@ -19,16 +19,14 @@ class CommentsController < ApplicationController
     end
   
     def update()
-      id = params[:id]
-      @comment = Comment.find(id)
-      puts "Voici mon comment : #{@comment}"
-      @comment.update(description: params[:description])
-      if @comment.save
-          redirect_to "/gossips/#{@comment.gossip_id}"
-          flash[:success] = "Votre commentaire a bien été modifié"
+      @comment = Comment.find(params[:id])
+      @comment.update(comment_params)
+      if @comment.update(comment_params)
+        flash[:success] = "Votre commentaire a bien été modifié."
+        redirect_to gossip_path(@gossip)
       else
-          redirect_to "/gossips/edit"
-          flash[:error] = "Nous n'avons pas réussi à modifier le commentaire pour la (ou les) raison(s) suivante(s) : #{@comment.errors.full_messages.join(",")}"
+        flash[:error] = "Nous n'avons pas réussi à modifier le commentaire pour la (ou les) raison(s) suivante(s) : #{@comment.errors.full_messages.join(" , ")}"
+        render :edit
       end
     end
 

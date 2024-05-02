@@ -6,7 +6,7 @@
   </div>
 <% end %>
 
-<%= form_with(model: @comment, url: gossip_comment_path(@comment), method: :patch) do |form| %>
+<%= form_with(model: [@gossip, @comment], local: true) do |form| %>
 
   <div class="field">
     <%= form.label :content, "Contenu" %>
@@ -17,4 +17,6 @@
     <%= form.submit "Enregistrer les modifications" %>
   </div>
 <% end %> 
+
+
 

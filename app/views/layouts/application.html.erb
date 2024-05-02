@@ -12,15 +12,6 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <% if current_user %>
-  <li class="nav-item">
-    <%= turbo_frame_tag "logout" do %>
-      <%= link_to "Déconnexion", new_user_path, method: :delete, class: "nav-link" %>
-    <% end %>
-  </li>
-<% end %>
-
-
   <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
