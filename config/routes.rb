@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
-  # get 'cities/show'
-  # get '/users/:id', to: 'users#show', as: 'user'
-  # get '/welcome/ask_name', to: 'welcome#ask_name'
+  
   get '/home', to: 'pages#home'
   get '/team', to: 'pages#team'
   get '/contact', to: 'pages#contact'
@@ -21,11 +16,13 @@ Rails.application.routes.draw do
   resources :users
   resources :cities
 
-  delete '/logout', to: 'sessions#destroy', as: :logout
-  get '/login', to: 'sessions#new', as: :new_session
   resources :sessions, only: [:new, :create, :destroy]
 
   # Defines the root path route ("/")
   root 'users#new'
+
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create' 
+  delete '/logout', to: 'sessions#destroy'
 
 end
