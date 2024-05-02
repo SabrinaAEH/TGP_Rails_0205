@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
   # get 'cities/show'
   # get '/users/:id', to: 'users#show', as: 'user'
   # get '/welcome/ask_name', to: 'welcome#ask_name'
@@ -12,13 +15,17 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root 'welcome#ask_name'
+  root 'pages#home'
 
   resources :gossips do
     resources :comments, only: [:create, :edit, :update, :destroy]
   end
 
-  resources :users, only: [:show]
+  resources :users
   resources :cities
+
+  delete '/logout', to: 'sessions#destroy', as: :logout
+  get '/login', to: 'sessions#new', as: :new_session
+  resources :sessions, only: [:new, :create, :destroy]
 
 end

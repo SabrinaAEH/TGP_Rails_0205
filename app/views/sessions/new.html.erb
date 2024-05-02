@@ -1,0 +1,12 @@
+<h1>Connexion</h1>
+
+<%= form_with url: sessions_path, method: :post do |form| %>
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+
+  <%= form.submit "Se connecter" %>
+<% end %>
+

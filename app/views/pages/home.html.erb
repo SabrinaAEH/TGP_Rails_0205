@@ -18,6 +18,12 @@
     </div>
 <% end %>
 
+<% if flash.notice %>
+  <div class="alert alert-success" role="alert">
+    <%= flash.notice %>
+  </div>
+<% end %>
+
 <div class="text-center bg-light p-3 mx-auto"> <!-- classe mx-auto = centrer horizontalement -->
   <h1>Liste des potins</h1>
 </div>
