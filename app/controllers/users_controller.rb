@@ -11,9 +11,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Inscription réussie !"
+      redirect_to home_path, notice: "Inscription réussie !"
     else
-      render :new
+      flash[:error] = "L'adresse e-mail existe déjà ou le formulaire contient des erreurs."
+      redirect_to new_user_path   
     end
   end
 
