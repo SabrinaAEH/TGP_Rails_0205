@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to The Gossip Project, a web application allowing users to consult gossips online.
+Welcome to The Gossip Project, a web application allowing users to consult, edit, and register gossips online.
 
 Technologies Used:
 
@@ -12,9 +12,10 @@ PostgreSQL 16.2
 
 Features:
 
-Browsing the list of gossips,  
+Browsing the list of gossips, edit them, register some. 
 Individual consultation of gossips to view associated details and comments,  
 User details
+City details and the gossips registered for each city.  
 
 Gems:
 
