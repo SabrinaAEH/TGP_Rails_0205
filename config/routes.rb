@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'welcome#ask_name'
 
-  resources :gossips
+  resources :gossips do
+    resources :comments, only: [:create, :edit, :update, :destroy]
+  end
+
   resources :users, only: [:show]
   resources :cities
 

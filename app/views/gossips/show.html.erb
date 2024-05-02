@@ -12,3 +12,12 @@
 
 <%= link_to "Éditer ce potin", edit_gossip_path(@gossip) %>
 <%= link_to "Supprimer ce potin", gossip_path(@gossip), data: { turbo_method: :delete } %>
+
+<h2> Commentaires </h2>
+
+<%= render @gossip.comments %>
+<%= form_with(model: [@gossip, @gossip.comments.build], local: true) do |form| %>
+  <%= form.text_area :content %>
+  <%= form.submit "Ajouter un commentaire" %>
+<% end %>
+

@@ -36,10 +36,10 @@ class GossipsController < ApplicationController
     @gossip = Gossip.find(params[:id])
     if @gossip.update(gossip_params)
       flash[:success] = "Le potin a été mis à jour avec succès !"
-      redirect_to @gossip
+      redirect_to gossip_path(@gossip)
     else
       flash[:error] = "Erreur lors de la mise à jour du potin. Veuillez vérifier les informations."
-      redirect_to edit_gossip_path
+      render :edit
     end
   end
 
@@ -57,4 +57,4 @@ class GossipsController < ApplicationController
     params.require(:gossip).permit(:title, :description)
   end
 
-end
+end 

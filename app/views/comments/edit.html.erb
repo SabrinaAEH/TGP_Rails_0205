@@ -1,0 +1,20 @@
+<h1>Modifier le commentaire</h1>
+
+<% if flash[:error].present? %>
+  <div class="alert alert-danger" role="alert">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
+<%= form_with(model: @comment, url: gossip_comment_path(@comment), method: :patch) do |form| %>
+
+  <div class="field">
+    <%= form.label :content, "Contenu" %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Enregistrer les modifications" %>
+  </div>
+<% end %> 
+
