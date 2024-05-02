@@ -1,5 +1,7 @@
-<h1>Inscription</h1>
-<h4>Merci d'entrer une adresse email valide et un mot de passe compris entre 6 et 10 caractères</h4>
+<div class="text-center">
+  <h1>Inscription</h1>
+  <h4>Merci d'entrer une adresse email valide et un mot de passe compris entre 6 et 10 caractères</h4>
+</div>
 
 <% if flash[:error].present? %>
   <div class="alert alert-danger" role="alert">
@@ -12,7 +14,6 @@
     <%= flash.notice %>
   </div>
 <% end %>
-
 <%= form_with(model: @user, url: users_path) do |form| %>
 
   <%= form.label :email %>
@@ -23,6 +24,16 @@
 
   <%= form.label :password_confirmation %>
   <%= form.password_field :password_confirmation %>
+
+  <%= form.label :first_name %>
+  <%= form.text_field :first_name %>
+
+  <%= form.label :age %>
+  <%= form.number_field :age %>
+
+  <%= form.label :city_id, "Ville" %>
+<%= form.collection_select :city_id, City.all, :id, :name, prompt: "Sélectionnez une ville" %>
+
 
   <%= form.submit "S'inscrire" %>
 <% end %>

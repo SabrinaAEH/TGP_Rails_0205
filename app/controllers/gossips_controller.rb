@@ -1,4 +1,13 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user,
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Merci de vous inscrire ou de vous connecter."
+      redirect_to new_user_path
+    end
+  end
+  
   def home
     @gossips = Gossip.all
   end
@@ -15,9 +24,7 @@ class GossipsController < ApplicationController
     # Création d'un nouveau potin avec les paramètres du formulaire
     @gossip = Gossip.new(gossip_params)
   
-    # Association du potin à l'utilisateur "anonymous"
-    anonymous = User.find_by(first_name: "anonymous")
-    @gossip.user = anonymous
+    @gossip = current_user.gossips.build(gossip_params) 
   
     if @gossip.save
       flash[:success] = "Le potin a été créé avec succès !"

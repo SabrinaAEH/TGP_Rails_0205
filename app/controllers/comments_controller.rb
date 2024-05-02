@@ -3,8 +3,7 @@ class CommentsController < ApplicationController
   
     def create
       @comment = @gossip.comments.build(comment_params)
-      anonymous = User.find_by(first_name: "anonymous")
-      @comment.user = anonymous
+      @comment.user = current_user
       
       if @comment.save
         flash[:success] = "Commentaire ajouté avec succès."

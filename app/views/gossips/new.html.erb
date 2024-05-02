@@ -1,24 +1,23 @@
-<h1>Nouveau Potin</h1>
+<div class="text-center">
+  <h1>Nouveau Potin</h1>
 
-<% if flash[:error].present? %>
-  <div class="alert alert-danger" role="alert">
-    <%= flash[:error] %>
-  </div>
-<% end %>
+  <% if flash[:error].present? %>
+    <div class="alert alert-danger" role="alert">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
 
-<%= form_with(model: @gossip, url: gossips_path) do |form| %>
-  <div>
-    <%= form.label :title, "Titre" %><br>
-    <%= form.text_field :title, placeholder: "Entrez le titre du potin" %>
-  </div>
+  <%= form_with(model: @gossip, url: gossips_path) do |form| %>
+    <div>
+      <%= form.label :title, "Titre:" %><br>
+      <%= form.text_field :title, placeholder: "Entrez le titre du potin" %>
+    </div>
 
-  <div>
-    <%= form.label :description, "Contenu" %><br>
-    <%= form.text_area :description, placeholder: "Entrez le contenu du potin" %>
-  </div>
+    <div>
+      <%= form.label :description, "Contenu:" %><br>
+      <%= form.text_area :description, placeholder: "Entrez le contenu du potin" %>
+    </div>
 
-  <%= form.submit "Créer le Potin" %>
-<% end %>
-
-
-
+    <%= form.submit "Créer le Potin" %>
+  <% end %>
+</div>
